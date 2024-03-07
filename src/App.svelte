@@ -1,16 +1,23 @@
 <script>
 	let name = "Ray";
-	let beltColour = "yellow"
+	let beltColour = "blue"
 	const handleClick = () => {
 		beltColour = 'red'
+	}
+
+	const handleInput = (e) => {
+		beltColour = e.target.value
 	}
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Hi Agas!</p>
-	<p>{beltColour} belt</p>
+	<p style="color: {beltColour}">{beltColour} belt</p>
 	<button on:click={handleClick}>Update belt colour</button>
+	<!-- One way data binding dont need bind property if it's 2 way you can bind -->
+	<!-- <input type="text" value={beltColour} on:input={handleInput}/> -->
+	<input type="text" bind:value={beltColour}/>
 </main>
 
 <style>
