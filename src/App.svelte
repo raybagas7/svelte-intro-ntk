@@ -1,6 +1,16 @@
 <script>
-	let name = "Ray";
+	let firstName = "Ray";
+	let lastName = "Agas";
 	let beltColour = "blue"
+
+	// Simplified value / reactive value
+	$: fullName = `${firstName} ${lastName}`
+	// reactive statement
+	$: {
+		console.log(beltColour)
+		console.log(fullName)
+	}
+
 	const handleClick = () => {
 		beltColour = 'red'
 	}
@@ -11,12 +21,9 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Hi Agas!</p>
-	<p style="color: {beltColour}">{beltColour} belt</p>
-	<button on:click={handleClick}>Update belt colour</button>
-	<!-- One way data binding dont need bind property if it's 2 way you can bind -->
-	<!-- <input type="text" value={beltColour} on:input={handleInput}/> -->
+	<p>{fullName} - {beltColour} belt</p>
+	<input type="text" bind:value={firstName}/>
+	<input type="text" bind:value={lastName}/>
 	<input type="text" bind:value={beltColour}/>
 </main>
 
