@@ -5,7 +5,8 @@
 </script>
 
 {#if showModal}
-  <div class="backdrop" class:promo={isPromo} on:click>
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
       <p>{message}</p>
     </div>
