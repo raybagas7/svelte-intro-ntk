@@ -18,14 +18,16 @@
   };
 </script>
 
-<Modal
-  message="It's a prop value"
-  isPromo={false}
-  {showModal}
-  on:click={toggleModal}
-/>
+<Modal isPromo={false} {showModal} on:click={toggleModal}>
+  <h3>Add a new person</h3>
+  <form>
+    <input type="type" placeholder="name" />
+    <input type="type" placeholder="belt color" />
+    <button>Add Person</button>
+  </form>
+</Modal>
 <main>
-  <button on:click|once={toggleModal}>Open Modal</button>
+  <button on:click={toggleModal}>Open Modal</button>
   {#each people as person (person.id)}
     <div>
       <h4>{person.name}</h4>
