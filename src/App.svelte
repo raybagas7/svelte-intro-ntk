@@ -17,10 +17,18 @@
     // delete person from people
     people = people.filter((person) => person.id !== id);
   };
+
+  const addPerson = (e) => {
+    // you can't change the variable directly / push so you need to re asign with something new
+    const person = e.detail;
+    // instead you can re asign it like this with spread operator
+    people = [person, ...people];
+    showModal = false;
+  };
 </script>
 
 <Modal isPromo={false} {showModal} on:click={toggleModal}>
-  <AddPersonFrom />
+  <AddPersonFrom on:addPerson={addPerson} />
 </Modal>
 <main>
   <button on:click={toggleModal}>Open Modal</button>
@@ -31,6 +39,11 @@
         <p><strong>Master ninja</strong></p>
       {/if}
       <p>{person.age} years old, {person.beltColor} belt.</p>
+      {#if person.skills}
+        {#each person.skills as skill (skill)}
+          <p>{skill}</p>
+        {/each}
+      {/if}
       <button on:click={() => handleDelete(person.id)}>Delete</button>
     </div>
   {:else}
